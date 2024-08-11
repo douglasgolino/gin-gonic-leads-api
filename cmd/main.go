@@ -11,9 +11,11 @@ func main() {
 	/*dbConnection, err := db.ConnectDB()
 	if err != nil {
 		panic(err)
-	}*/
+	}
 
-	//LeadRepository := repository.NewLeadRepository(dbConnection)
+	LeadRepository := repository.NewLeadRepository(dbConnection)
+
+	LeadUsecase := usecase.NewLeadUseCase(LeadRepository)*/
 
 	server.Run(":8000")
 
