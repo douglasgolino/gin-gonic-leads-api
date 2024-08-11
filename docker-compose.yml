@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  mkt_db:
+    container_name: mkt_db
+    image: postgres:12
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: D0uGu57$
+      POSTGRES_DB: mkt_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
