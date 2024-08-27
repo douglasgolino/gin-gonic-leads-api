@@ -1,6 +1,11 @@
-version: "3.9"
-
-services:
+services:  
+  lead_api:
+    container_name: lead_api
+    build: .
+    ports: 
+      - "8000:8000"
+    depends_on:
+      - mkt_db
   mkt_db:
     container_name: mkt_db
     image: postgres:12
