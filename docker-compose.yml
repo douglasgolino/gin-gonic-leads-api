@@ -2,6 +2,7 @@ services:
   lead_api:
     container_name: lead_api
     build: .
+    image: gustavosg940/lead_api:latest
     ports: 
       - "8000:8000"
     depends_on:
