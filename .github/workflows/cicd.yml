@@ -24,6 +24,6 @@ jobs:
             - name: Pull docker image
               run: docker pull gustavosg940/lead_api:latest
             - name: Delete old container
-              run: docker rm -f lead-api-container
+              run: docker rm -f lead-api-contain
             - name: Run docker container
               run: docker run -d -p 800:8000 --name lead-api-container gustavosg940/lead_api
