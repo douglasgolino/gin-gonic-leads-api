@@ -1,31 +1,31 @@
 version: '3.8'
 
-services:  
+services:
   lead_api:
-    container_name: lead_api
+    container_name: lead-api
     build:
       context: .
       dockerfile: Dockerfile
     image: gustavosg940/lead_api:latest
-    ports: 
+    ports:
       - "8000:8000"
     depends_on:
       - mkt_db
 
   mkt_db:
-    container_name: mkt_db
-    image: postgres:12
+    container_name: mkt-db
+    image: mysql:8.0
+    restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: D0uGu57$
-      POSTGRES_DB: mkt_db
+      MYSQL_ROOT_PASSWORD: D0uGu57$
+    command: --default-authentication-plugin=mysql_native_password
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - mysqldata:/var/lib/mysql
 
   frontend:
-    container_name: lead_frontend
+    container_name: lead-frontend
     image: nginx:alpine
     ports:
       - "8080:80"
@@ -35,4 +35,4 @@ services:
       - lead_api
 
 volumes:
-  pgdata:
+  mysqldata:
